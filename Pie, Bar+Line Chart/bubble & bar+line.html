@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pie dan Bar chart</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+
+<body>
+    <h2>produksi</h2>
+    <div id="pie-chart"></div>
+    <script>
+        BAR = document.getElementById('pie-chart');
+
+        var dataProduksi = [{
+            values: [8388548.5, 4445844.2, 11123607.18, 7166101.36, 19761562, 35085019.18, 7283164.01, 4464060.63, 10275262.32, 5608598.28, 19485771.37],
+            labels: ["Sumatera Utara", "Sumatera Barat", "Lampung", "Jawa Barat", "Jawa Tengah", "Jawa Timur", "Nusa Tenggara Barat", "Sulawesi Utara", "Sulawesi Selatan", "Gorontalo", "Provinsi lainnya"],
+            type: 'pie'
+        }];
+
+        var layoutProduksi = {
+            title: 'Produksi Jagung berdasarkan Provinsi (dalam satuan ton)',
+            height: 600,
+            width: 800
+        };
+
+        Plotly.newPlot(BAR, dataProduksi, layoutProduksi);
+    </script>
+    <h2>luas lahan</h2>
+    <div id="pie-chart_2"></div>
+    <script>
+        BAR = document.getElementById('pie-chart_2');
+
+        var dataLuas = [{
+            values: [1402152.98, 649928, 2126255.79, 935269.01, 3368680, 7014158.46, 1223739.3, 1163968.15, 1924518.87, 1195665.02, 4916690.15],
+            labels: ["Sumatera Utara", "Sumatera Barat", "Lampung", "Jawa Barat", "Jawa Tengah", "Jawa Timur", "Nusa Tenggara Barat", "Sulawesi Utara", "Sulawesi Selatan", "Gorontalo", "Provinsi lainnya"],
+            type: 'pie'
+        }];
+
+        var layoutLuas = {
+            title: 'Luas Panen Jagung berdasarkan Provinsi (dalam satuan ha)',
+            height: 600,
+            width: 800
+        };
+
+        Plotly.newPlot(BAR, dataLuas, layoutLuas);
+
+    </script>
+    <h2>bar chart</h2>
+    <div id="bar-chart"></div>
+    <script>
+        BAR = document.getElementById('bar-chart');
+
+        var barData = {
+            x: ["2013", "2014", "2015", "2016", "2017", "2018"],
+            y: [18511853, 19008426, 19612435, 23578413, 16687382.05, 23452403.03],
+            type: 'bar',
+            name: 'Produksi',
+            yaxis: 'y'
+        };
+
+        var lineData = {
+            x: ["2013", "2014", "2015", "2016", "2017", "2018"],
+            y: [3818504, 3837019, 3787367, 4444370, 4466754.1, 4500592.73],
+            type: 'scatter',
+            mode: 'lines+markers',
+            name: 'Luas panen',
+            yaxis: 'y2'
+        };
+
+        var layout = {
+            title: 'Produksi dan Luas Panen Jagung',
+            yaxis: {
+                title: 'Produksi Jagung (ton)',
+                side: 'left'
+            },
+            yaxis2: {
+                title: 'Luas Panen (ha)',
+                overlaying: 'y',
+                side: 'right',
+                range: [1000000, 5000000]
+            }
+        };
+
+        var data = [barData, lineData];
+        Plotly.newPlot(BAR, data, layout);
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peta Sebaran Luas Panen Jagung di Indonesia</title>
+    <script src="https://code.highcharts.com/maps/highmaps.js"></script>
+    <script src="https://code.highcharts.com/mapdata/countries/id/id-all.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        #container {
+            height: 100vh;
+            width: 100vw;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="container"></div>
+    <script>
+        const data = [
+            ['id-ac', 355282.6],
+            ['id-su', 1402152.98],
+            ['id-sb', 649928],
+            ['id-ri', 72872.6],
+            ['id-ja', 61558.17],
+            ['id-sl', 445349.5],
+            ['id-be', 105841.83],
+            ['id-la', 2126255.79],
+            ['id-bb', 2277.7],
+            ['id-kr', 1023.5],
+            ['id-jk', 0],
+            ['id-jr', 935269.01],
+            ['id-jt', 3368680],
+            ['id-yo', 376029.14],
+            ['id-ji', 7014158.46],
+            ['id-bt', 97539.6],
+            ['id-ba', 92141.14],
+            ['id-nb', 1223739.3],
+            ['id-nt', 1715289],
+            ['id-kb', 216315.49],
+            ['id-kt', 37319.93],
+            ['id-ks', 219313.14],
+            ['id-ki', 39372.3],
+            ['id-ku', 6226],
+            ['id-sw', 1163968.15],
+            ['id-st', 313455.28],
+            ['id-sn', 1924518.87],
+            ['id-sg', 190960.16],
+            ['id-go', 1195665.02],
+            ['id-sr', 368080.94],
+            ['id-ma', 29218.95],
+            ['id-la', 142402.93],
+            ['id-ib', 7237.45],
+            ['id-pa', 21582.8]
+        ];
+
+        // Determine the maximum value in the data for setting colorAxis
+        const maxValue = Math.max(...data.map(item => item[1]));
+
+        function formatNumber(value) {
+            return value.toLocaleString() + ' ha';
+        }
+
+        Highcharts.mapChart('container', {
+            chart: {
+                map: 'countries/id/id-all'
+            },
+            title: {
+                text: 'Peta Sebaran Luas Panen Jagung (Dalam Hektar)'
+            },
+            subtitle: {
+                text: 'Rata-Rata Tahun 2013 - 2018'
+            },
+            mapNavigation: {
+                enabled: true,
+                buttonOptions: {
+                    verticalAlign: 'bottom'
+                }
+            },
+            colorAxis: {
+                dataClasses: [
+                    {
+                        color: '#cccccc',
+                        from: 0,
+                        to: 0,
+                        name: 'Tidak ada data'
+                    },
+                    {
+                        color: '#ff0000',
+                        from: 1,
+                        to: 100000,
+                        name: 'Rendah ( < 100.000 ha)'
+                    },
+                    {
+                        color: '#ffff00',
+                        from: 100000,
+                        to: 1000000,
+                        name: 'Sedang (100.000 - 1.000.000 ha)'
+                    },
+                    {
+                        color: '#00ff00',
+                        from: 1000000,
+                        to: 5000000,
+                        name: 'Tinggi ( > 1.000.000 ha)'
+                    },
+                    {
+                        color: '#0000ff',
+                        from: 5000000,
+                        to: maxValue,
+                        name: 'Tertinggi'
+                    }
+                ]
+            },
+            series: [{
+                data: data,
+                name: 'Luas Panen Jagung',
+                states: {
+                    hover: {
+                        color: '#E1F1FF'
+                    }
+                },
+                dataLabels: {
+                    enabled: true,
+                    formatter: function () {
+                        return this.point.name + '<br>' + formatNumber(this.point.value);
+                    },
+                    style: {
+                        fontSize: '10px',
+                        fontWeight: 'bold',
+                        color: '#000000',
+                        textOutline: '2px contrast'
+                    }
+                },
+                tooltip: {
+                    formatter: function () {
+                        return this.point.name + ': ' + formatNumber(this.point.value);
+                    }
+                }
+            }]
+        });
+    </script>
+</body>
+</html>

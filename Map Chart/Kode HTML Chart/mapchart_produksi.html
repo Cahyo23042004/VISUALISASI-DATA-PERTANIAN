@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peta Sebaran Produksi Jagung di Indonesia</title>
+    <script src="https://code.highcharts.com/maps/highmaps.js"></script>
+    <script src="https://code.highcharts.com/mapdata/countries/id/id-all.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        #container {
+            height: 100vh;
+            width: 100vw;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="container"></div>
+    <script>
+        const data = [
+            ['id-ac', 1651687.48],
+            ['id-su', 8388548.5],
+            ['id-sb', 4445844.2],
+            ['id-ri', 182058],
+            ['id-ja', 406584],
+            ['id-sl', 2836679.94],
+            ['id-be', 554306],
+            ['id-la', 11123607.18],
+            ['id-bb', 8744.91],
+            ['id-kr', 2547.69],
+            ['id-jk', 0],
+            ['id-jr', 7166101.36],
+            ['id-jt', 19761562],
+            ['id-yo', 1744458.77],
+            ['id-ji', 35085019.18],
+            ['id-bt', 456905.15],
+            ['id-ba', 285517.23],
+            ['id-nb', 7283164.01],
+            ['id-nt', 4379550.1],
+            ['id-kb', 809506.15],
+            ['id-kt', 174941.68],
+            ['id-ks', 1146342.36],
+            ['id-ki', 202692.07],
+            ['id-ku', 18305.75],
+            ['id-sw', 4464060.63],
+            ['id-st', 1412977.29],
+            ['id-sn', 10275262.32],
+            ['id-sg', 614984.1],
+            ['id-go', 5608598.28],
+            ['id-sr', 1806565.46],
+            ['id-ma', 103986.62],
+            ['id-la', 595426.59],
+            ['id-ib', 16695.52],
+            ['id-pa', 74308.51],
+            ['id-pb', 118419400.9]
+        ];
+
+        // Determine the maximum value in the data for setting colorAxis
+        const maxValue = Math.max(...data.map(item => item[1]));
+
+        function formatNumber(value) {
+            return value.toLocaleString() + ' ton';
+        }
+
+        Highcharts.mapChart('container', {
+            chart: {
+                map: 'countries/id/id-all'
+            },
+            title: {
+                text: 'Peta Sebaran Produksi Jagung (Dalam Ton)'
+            },
+            subtitle: {
+                text: 'Rata-Rata Tahun 2013 - 2018'
+            },
+            mapNavigation: {
+                enabled: true,
+                buttonOptions: {
+                    verticalAlign: 'bottom'
+                }
+            },
+            colorAxis: {
+                dataClasses: [
+                    {
+                        color: '#cccccc',
+                        from: 0,
+                        to: 0,
+                        name: 'Tidak ada data'
+                    },
+                    {
+                        color: '#ff0000',
+                        from: 1,
+                        to: 1000000,
+                        name: 'Rendah ( < 1.000.000 ton)'
+                    },
+                    {
+                        color: '#ffff00',
+                        from: 1000000,
+                        to: 5000000,
+                        name: 'Sedang (1.000.000 - 5.000.000 ton)'
+                    },
+                    {
+                        color: '#00ff00',
+                        from: 5000000,
+                        to: 20000000,
+                        name: 'Tinggi (5.000.000 - 20.000.000 ton)'
+                    },
+                    {
+                        color: '#0000ff',
+                        from: 20000000,
+                        to: maxValue,
+                        name: 'Tertinggi'
+                    }
+                ]
+            },
+            series: [{
+                data: data,
+                name: 'Produksi Jagung',
+                states: {
+                    hover: {
+                        color: '#E1F1FF'
+                    }
+                },
+                dataLabels: {
+                    enabled: true,
+                    formatter: function () {
+                        return this.point.name + '<br>' + formatNumber(this.point.value);
+                    },
+                    style: {
+                        fontSize: '10px',
+                        fontWeight: 'bold',
+                        color: '#000000',
+                        textOutline: '2px contrast'
+                    }
+                },
+                tooltip: {
+                    formatter: function () {
+                        return this.point.name + ': ' + formatNumber(this.point.value);
+                    }
+                }
+            }]
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, 
+                   initial-scale=1.0">
+    <script src=
+"https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js">
+    </script>
+    <script src=
+"https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.1.2/chart.umd.js">
+    </script>
+    <title>
+          Bubble Chart
+      </title>
+</head>
+
+<body>
+  <div>
+      <h2 style="color:green">
+        Produksi dan Luas Panen Jagung
+      </h2>
+      <h5>K1 - Kelompok 3</h5>
+      <div>
+          <canvas id="bubbleChart1"
+                  width="500"
+                  height="500">
+          </canvas>
+      </div>
+  </div>
+  <script>
+    const data = {
+        datasets: [{
+            data: [
+                { x: 2013, y: 3821504, r: 18.511853 },
+                { x: 2014, y: 3837019, r: 19.008426 },
+                { x: 2015, y: 3787367, r: 19.612435 },
+                { x: 2016, y: 4444369, r: 23.578413 },
+                { x: 2017, y: 4466754.1, r: 16.68738205 },
+                { x: 2018, y: 4500592.74, r: 23.45240302 },
+            ],
+            backgroundColor: 'rgba(255, 99, 132, 0.6)',
+            borderColor: 'rgba(255, 99, 132, 1)',
+            borderWidth: 2,
+            label: 'Produksi (Juta Ton)',
+            hoverBackgroundColor: 'rgba(255, 99, 132, 0.8)',
+            hoverBorderColor: 'rgba(255, 99, 132, 1)',
+            hoverBorderWidth: 2,
+        }],
+    };
+    const config = {
+            type: 'bubble',
+            data: data,
+            options: {
+                scales: {
+                    x: {  type: 'category',
+                          labels: ['0', '2013', '2014', '2015', '2016', '2017', '2018'],
+                          title: { display: true, 
+                                  text: 'Tahun' }
+                       },
+                    y: { title: { display: true, 
+                                  text: 'Luas Panen (ha)' }
+                        },
+                },
+                plugins: {
+                    legend: { display: true, position: 'top' },
+                    tooltip: { 
+                      intersect: true,
+                      callbacks: {
+                            label: function(context) {
+                                return 'Produksi (Juta Ton): ' + context.raw.r;
+                            }
+                        }
+                    },
+                },
+            },
+        };
+        const myBubbleChart = 
+              new Chart(document.getElementById('bubbleChart1'), config);
+    </script>
+</body>
+ 
+</html>
