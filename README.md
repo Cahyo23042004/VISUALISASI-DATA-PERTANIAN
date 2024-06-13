@@ -81,3 +81,13 @@ Menggunakan visualisasi bubble untuk menunjukkan hubungan antara tiga variabel.
 - Arliansyah, J., & Prasetyo, Y. (2017). Analisis Potensi Produksi Jagung di Indonesia. Jurnal Pertanian, 12(1), 45-53.
 - Badan Pusat Statistik (BPS). (2019). Statistik Produksi Tanaman Pangan. Jakarta: BPS.
 - Highcharts. (2024). Highmaps Documentation. Diakses dari [https://www.highcharts.com/docs/maps](https://www.highcharts.com/docs/maps).
+
+- 
+![Full Map Produksi![Full Map Luas Panen](https://github.com/Cahyo23042004/VISUALISASI-DATA-PERTANIAN/assets/80837061/81a2dd6a-1607-496c-ba4b-8c43240abc85)
+ Jagung](https://github.com/Cahyo23042004/VISUALISASI-DATA-PERTANIAN/assets/80837061/a0fceec0-9149-45ea-ab94-4a389db0c964)
+
+![Screenshot 2024-06-03 230827](https://github.com/Cahyo23042004/VISUALISASI-DATA-PERTANIAN/assets/80837061/d0444f70-ac50-434f-abaf-6f8ed1cfcd38)
+
+![WhatsApp Image 2024-06-13 at 23 14 15_d44f80b8](https://github.com/Cahyo23042004/VISUALISASI-DATA-PERTANIAN/assets/80837061/8459241e-b0fb-40f7-b08d-480731187382)
+![WhatsApp Image 2024-06-13 at 23 13 56_5209f842](https://github.com/Cahyo23042004/VISUALISASI-DATA-PERTANIAN/assets/80837061/7f415048-b09b-4983-a05f-9038505ff1d3)
+![WhatsApp Image 2024-06-13 at 23 14 34_63003c9a](https://github.com/Cahyo23042004/VISUALISASI-DATA-PERTANIAN/assets/80837061/70196b81-8f61-420b-978a-60bb806d62ff)
